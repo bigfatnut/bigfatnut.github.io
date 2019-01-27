@@ -2,6 +2,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="./css/simple-grid.min.css">
+        <link rel="stylesheet" href="./css/style.css">
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133287015-1"></script>
         <script>
@@ -17,17 +18,28 @@
 
             <div class="row">
                 <div class="col-12" style="text-align: center;">
-                    <a href="https://www.bigfatnut.com"><h1>bigfatnut.com</h1></a>
+                    <a href="https://www.bigfatnut.com"><p>bigfatnut.com</p></a>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12" style="text-align: center;">
-                    <p>hope you get a big fat nut</p>
+                    <h1>hope you get a big fat nut</h1>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <img style="display: block; margin: auto;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEF
+
+            <script type="text/javascript">
+                function zoomin(){
+                    const nut = document.getElementById("nut");
+                    let width = nut.clientWidth
+                    nut.style.width = (width + 100) + "px";
+                    nut.style.height = (width + 100) + "px";
+                    console.log(width)
+                }
+            </script>
+        </div>
+
+                    <img id="nut" class="nut" height="200px" width="200px" onclick="zoomin()"
+                    src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEF
                     kb2JlIElsbHVzdHJhdG9yIDEzLjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb2
                     46IDYuMDAgQnVpbGQgMTQ5NDgpICAtLT4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vR
                     FREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQv
@@ -630,9 +642,7 @@
                     LTkuNSwxNHMtNS43NSw5LjUtNy41LDExcy0yLjc1LDkuNS00LjI1LDEyLjI1ICBzLTUsMTMuMjU
                     tNSwxNXMwLjE2NywxOC44MzQsMC41LDIxczIuMzc1LDguNjg4LDIuNjI1LDlTMzYuODEzLDE1OC
                     44MTMsMzYuODEzLDE1OC44MTN6Ii8+Cjwvc3ZnPg==">
-                </div>
-            </div>
-        </div>
+        
       
     </body>
 </html>
