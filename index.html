@@ -22,7 +22,7 @@
             ihadANut();
 
             let nutCount = 0
-            let postNut = 0
+            let newNut = 0
             fetch("https://spreadsheets.google.com/feeds/list/1ZdrTD9I5FA1ppnC_a1sLxwHjIsjssNEf6GF5-K-8dH0/2/public/basic?alt=json")
                 .then(res => res.json())
                 .then((out) => {
@@ -30,8 +30,11 @@
                         fetch("https://spreadsheets.google.com/feeds/list/1ZdrTD9I5FA1ppnC_a1sLxwHjIsjssNEf6GF5-K-8dH0/2/public/basic?alt=json")
                         .then(res => res.json())
                         .then((out) => {
-                            nutCount = out['feed']['entry'][0]['title']['$t']
-                            document.getElementById("nutCount").innerHTML = nutCount++
+                            newNut = out['feed']['entry'][0]['title']['$t']
+                            if (nutCount < newNut) {
+                                nutCount = newNut
+                                document.getElementById("nutCount").innerHTML = nutCount
+                            }
                         })
 
                         if (detect69(nutCount)){
@@ -43,37 +46,35 @@
                 window.odometerOptions = {
                     duration: 10, // Change how long the javascript expects the CSS animation to take
                 };
+
+            function zoomin(){
+                ihadANut();
+                if (nutCount != 0) {
+                    document.getElementById("nutCount").innerHTML = ++nutCount
+                }
+                const nut = document.getElementById("nut");
+                let width = nut.clientWidth
+                nut.style.width = (width + 100) + "px";
+                nut.style.height = (width + 100) + "px";
+            }
         </script>
     </head>
     <body>
         <form name="i-had-a-nut"></form>
         <div class="container">
-
             <div class="row">
                 <div class="col-12" style="text-align: center;">
-                    <h1 id="nutCount" class="nutCount odometer"></h1> <h1> big fat nuts</h1>
+                    <h4>Witness big fat nuts in real time.</h4>
+                    <h4>Live nutting.</h4>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12" style="text-align: center;">
-                    <h3>hope you get a big fat nut too</h3>
+                    <h1 id="nutCount" class="nutCount odometer"></h1> <h1 class="nutCount"> big fat nuts</h1>
                 </div>
             </div>
-
-            <script type="text/javascript">
-                function zoomin(){
-                    ihadANut();
-                    const nut = document.getElementById("nut");
-                    let width = nut.clientWidth
-                    nut.style.width = (width + 100) + "px";
-                    nut.style.height = (width + 100) + "px";
-                    if (postNut != 0) {
-                        document.getElementById("nutCount").innerHTML = postNut++
-                    }
-                }
-            </script>
-        </div>
-
+            <div class="row">
+                <div class="col-12" style="text-align: center;">
                     <img id="nut" class="nut" height="200px" width="200px" onclick="zoomin()"
                     src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEF
                     kb2JlIElsbHVzdHJhdG9yIDEzLjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb2
@@ -678,6 +679,8 @@
                     LTkuNSwxNHMtNS43NSw5LjUtNy41LDExcy0yLjc1LDkuNS00LjI1LDEyLjI1ICBzLTUsMTMuMjU
                     tNSwxNXMwLjE2NywxOC44MzQsMC41LDIxczIuMzc1LDguNjg4LDIuNjI1LDlTMzYuODEzLDE1OC
                     44MTMsMzYuODEzLDE1OC44MTN6Ii8+Cjwvc3ZnPg==">
-
+                </div>
+            </div>
+        </div>
     </body>
 </html>

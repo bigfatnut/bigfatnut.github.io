@@ -1,21 +1,24 @@
 .nut {
     position:absolute;
-    top:-300px;
+    top:-5em;
     left:0;
     right:0;
     bottom:0;
     margin:auto;
     transition: all .2s ease-in-out;
     cursor: grab;
+    z-index: 2;
 }
 
 h1 {
     display: inline;
+    font-size: 100px;
 }
 
 .nutCount {
-    bottom: 13px;
-    right: 6px;
+    bottom: 0.43em;
+    right: 0.2em;
+    z-index: 1;
 }
 
 .odometer.odometer-animating-up .odometer-ribbon-inner, .odometer.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
@@ -23,5 +26,11 @@ h1 {
     -moz-transition-duration: 0.5s !important;
     -ms-transition-duration: 0.5s !important;
     -o-transition-duration: 0.5s !important;
-    transition-duration: 0.5s !important
+    transition-duration: 0.5s !important;
+}
+
+.footer {
+    text-align: center;
+    bottom: 50%;
+    position: fixed;
 }
