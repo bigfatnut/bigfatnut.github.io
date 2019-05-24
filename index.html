@@ -17,26 +17,30 @@
 
             let nutCount = 0
             let postNut = 0
-            window.setInterval(function(){ 
-                fetch("https://spreadsheets.google.com/feeds/list/1ZdrTD9I5FA1ppnC_a1sLxwHjIsjssNEf6GF5-K-8dH0/1/public/basic?alt=json")
+            fetch("https://spreadsheets.google.com/feeds/list/1ZdrTD9I5FA1ppnC_a1sLxwHjIsjssNEf6GF5-K-8dH0/1/public/basic?alt=json")
                 .then(res => res.json())
                 .then((out) => {
-                    nutCount = Object.keys(out['feed']['entry']).length
+                    window.setInterval(function(){ 
+                        fetch("https://spreadsheets.google.com/feeds/list/1ZdrTD9I5FA1ppnC_a1sLxwHjIsjssNEf6GF5-K-8dH0/1/public/basic?alt=json")
+                        .then(res => res.json())
+                        .then((out) => {
+                            nutCount = Object.keys(out['feed']['entry']).length
+                        })
+
+                        if (detect69(nutCount)){
+                            console.log("YESYESYES!!")
+                        }
+
+                        let update = setInterval(function() {     
+                                if(postNut < nutCount){
+                                    document.getElementById("nutCount").innerHTML = postNut++;
+                                }else{
+                                    clearInterval(update);
+                                }
+                        }, 50);
+                    }, 1000);
                 })
 
-                if (detect69(nutCount)){
-                    console.log("YESYESYES!!")
-                }
-
-                let update = setInterval(function() {     
-                        if(postNut < nutCount){
-                            document.getElementById("nutCount").innerHTML = postNut++;
-                        }else{
-                            clearInterval(update);
-                        }
-                }, 50);
-                
-            }, 100);
         </script>
     </head>
     <body>
