@@ -6,7 +6,6 @@
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133287015-1"></script>
         <script src="nutcount.js" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -23,16 +22,19 @@
                 .then(res => res.json())
                 .then((out) => {
                     nutCount = Object.keys(out['feed']['entry']).length
-                    if (nutCount != postNut) {
-                        console.log("nut update")
-                        postNut = nutCount
-                        document.getElementById("nutCount").innerText = nutCount
-                    }
                 })
 
                 if (detect69(nutCount)){
                     console.log("YESYESYES!!")
                 }
+
+                let update = setInterval(function() {     
+                        if(postNut < nutCount){
+                            document.getElementById("nutCount").innerHTML = postNut++;
+                        }else{
+                            clearInterval(update);
+                        }
+                }, 50);
                 
             }, 100);
         </script>
@@ -43,7 +45,7 @@
 
             <div class="row">
                 <div class="col-12" style="text-align: center;">
-                    <h1 id="nutCount" class="nutCount">...</h1> <h1> big fat nuts</h1>
+                    <h1 id="nutCount" class="nutCount">...</h1> <h1> people had a big fat nut</h1>
                 </div>
             </div>
             <div class="row">
@@ -59,7 +61,7 @@
                     nut.style.width = (width + 100) + "px";
                     nut.style.height = (width + 100) + "px";
                     ihadANut();
-                    nutCount += 1;
+                    document.getElementById("nutCount").innerHTML = nutCount++;
                 }
             </script>
         </div>
