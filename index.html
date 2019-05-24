@@ -5,25 +5,50 @@
         <link rel="stylesheet" href="./css/style.css">
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133287015-1"></script>
+        <script src="nutcount.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
         <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-133287015-1');
 
-          gtag('config', 'UA-133287015-1');
+            ihadANut();
+
+
+            let nutCount = 0
+            let postNut = 0
+            window.setInterval(function(){ 
+                fetch("https://spreadsheets.google.com/feeds/list/1ZdrTD9I5FA1ppnC_a1sLxwHjIsjssNEf6GF5-K-8dH0/1/public/basic?alt=json")
+                .then(res => res.json())
+                .then((out) => {
+                    nutCount = Object.keys(out['feed']['entry']).length
+                    if (nutCount != postNut) {
+                        console.log("nut update")
+                        postNut = nutCount
+                        document.getElementById("nutCount").innerText = nutCount
+                    }
+                })
+
+                if (detect69(nutCount)){
+                    console.log("YESYESYES!!")
+                }
+                
+            }, 100);
         </script>
     </head>
     <body>
+        <form name="i-had-a-nut"></form>
         <div class="container">
 
             <div class="row">
                 <div class="col-12" style="text-align: center;">
-                    <a href="https://www.bigfatnut.com"><p>bigfatnut.com</p></a>
+                    <h1 id="nutCount" class="nutCount">...</h1> <h1> big fat nuts</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12" style="text-align: center;">
-                    <h1>hope you get a big fat nut</h1>
+                    <h3>hope you get a big fat nut too</h3>
                 </div>
             </div>
 
@@ -33,7 +58,8 @@
                     let width = nut.clientWidth
                     nut.style.width = (width + 100) + "px";
                     nut.style.height = (width + 100) + "px";
-                    console.log(width)
+                    ihadANut();
+                    nutCount += 1;
                 }
             </script>
         </div>
