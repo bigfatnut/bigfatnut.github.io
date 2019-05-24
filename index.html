@@ -65,7 +65,9 @@
                     nut.style.width = (width + 100) + "px";
                     nut.style.height = (width + 100) + "px";
                     ihadANut();
-                    document.getElementById("nutCount").innerHTML = (nutCount++).toLocaleString();
+                    if (postNut != 0) {
+                        document.getElementById("nutCount").innerHTML = (postNut++).toLocaleString();
+                    }
                 }
             </script>
         </div>
