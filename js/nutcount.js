@@ -9,3 +9,14 @@ function detect69(nutCount) { // Lol
     }
     return false
 }
+
+function zoomin(){
+    ihadANut();
+    if (nutCount != 0) {
+        document.getElementById("nutCount").innerHTML = ++nutCount
+    }
+    const nut = document.getElementById("nut");
+    let width = nut.clientWidth
+    nut.style.width = (width + 100) + "px";
+    nut.style.height = (width + 100) + "px";
+}

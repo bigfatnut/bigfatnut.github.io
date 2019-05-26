@@ -15,8 +15,12 @@ h1 {
     font-size: 100px;
 }
 
+a {
+    text-decoration:none;
+}
+
 .nutCount {
-    bottom: 0.43em;
+    bottom: 0.40em;
     right: 0.2em;
     z-index: 1;
 }
@@ -30,7 +34,9 @@ h1 {
 }
 
 .footer {
-    text-align: center;
-    bottom: 50%;
     position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
